@@ -1,0 +1,41 @@
+# Node/Angular (front/)
+front/node_modules/
+front/dist/
+front/.angular/
+front/.env
+front/.env.*.local
+front/.vscode/
+front/.DS_Store
+front/npm-debug.log*
+front/yarn-debug.log*
+front/yarn-error.log*
+front/package-lock.json
+front/.idea/
+front/.sass-cache/
+front/.cache/
+front/.turbo/
+front/coverage/
+front/tmp/
+front/.eslintcache
+
+# Mac/Windows system files
+.DS_Store
+Thumbs.db
+
+# Spring Boot (back/)
+back/target/
+back/.classpath
+back/.project
+back/.settings/
+back/.idea/
+back/.vscode/
+back/.mvn/
+back/logs/
+back/*.iml
+back/.env
+back/.DS_Store
+
+# General
+*.log
+.env
+.env.*

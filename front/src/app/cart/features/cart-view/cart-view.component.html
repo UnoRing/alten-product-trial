@@ -1,0 +1,58 @@
+<div class="cart-container p-4">
+  <h2 class="text-2xl font-bold mb-4">Mon Panier</h2>
+  
+  @if (cart().items.length === 0) {
+    <p-card>
+      <p class="empty-cart">Votre panier est vide</p>
+    </p-card>
+  } @else {
+    <div class="cart-total-section">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <span class="total-label">Total :</span>
+          <span class="total-amount">{{ cart().totalPrice | currency:'EUR' }}</span>
+          <span class="item-count">({{ cart().totalItems }} article(s))</span>
+        </div>
+        <p-button 
+          label="Vider le panier" 
+          severity="secondary" 
+          (onClick)="clearCart()"
+        />
+      </div>
+    </div>
+    <div class="cart-list">
+      @for (item of cart().items; track item.product.id) {
+        <p-card class="cart-item mb-4">
+          <div class="flex items-center gap-4">
+            <img 
+              [src]="item.product.image" 
+              [alt]="item.product.name"
+              class="product-image"
+              width="64" height="64"
+            />
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-center mb-1">
+                <h3 class="font-semibold truncate">{{ item.product.name }}</h3>
+                <span class="cart-item-price">{{ (item.product.price * item.quantity) | currency:'EUR' }}</span>
+              </div>
+              <div class="text-gray-600 text-sm truncate">{{ item.product.description }}</div>
+              <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs text-gray-500">Prix unitaire:</span>
+                <span class="text-green-700 font-bold">{{ item.product.price | currency:'EUR' }}</span>
+                <span class="text-xs text-gray-500 ml-4">Quantité:</span>
+               
+                <p-button 
+                  icon="pi pi-trash" 
+                  severity="danger" 
+                  size="small"
+                  (onClick)="removeFromCart(item.product.id)"
+                  [style]="{'margin-left': '8px'}"
+                />
+              </div>
+            </div>
+          </div>
+        </p-card>
+      }
+    </div>
+  }
+</div> 

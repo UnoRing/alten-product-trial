@@ -1,0 +1,33 @@
+<p-toolbar [style]="{ height: '100px' }">
+    <div class="p-toolbar-group-start flex items-center gap-2">
+        <button class="sidebar-toggle" (click)="toggleSidebar()">
+            <i class="pi" [ngClass]="sidebarCollapsed ? 'pi-bars' : 'pi-times'"></i>
+        </button>
+        <img src="assets/logos/alten logo.jpeg" alt="logo" />
+    </div>
+    <div class="p-toolbar-group-center">
+        {{ title }}
+    </div>
+    <div class="p-toolbar-group-end">
+        <a [routerLink]="['/cart/view']" class="cart-link relative flex items-center justify-center"
+        (click)="collapseSidebar()">
+            <i class="pi pi-shopping-cart" style="font-size: 2rem"></i>
+            @if (cart().totalItems > 0) {
+                <span class="cart-badge">
+                    {{ cart().totalItems }}
+                </span>
+            }
+        </a>
+    </div>
+</p-toolbar>
+<div class="main-layout">
+    <div class="sidebar-overlay" [class.open]="!sidebarCollapsed" (click)="collapseSidebar()"></div>
+    <div class="sidebar-drawer" [class.open]="!sidebarCollapsed" (click)="collapseSidebar()">
+        <app-panel-menu (menuItemClicked)="collapseSidebar()"/>
+    </div>
+    <div class="content-area">
+        <div class="w-full app-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

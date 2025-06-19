@@ -1,0 +1,114 @@
+<div class="product-list-container p-4">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-gray-800">Les produits du shop</h1>
+    <!-- TODO: Reactivate if linked to Backend -->
+    <!-- <p-button label="Créer produit" icon="pi pi-plus" (onClick)="onCreate()" severity="success"/> -->
+  </div>
+
+  <p-dataView #dv [value]="products()" [paginator]="true" [rows]="12" [showPageLinks]="true" [layout]="'grid'">
+    <ng-template pTemplate="grid" let-products>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        @for (product of products; track product.id) {
+          <div class="product-card">
+            <p-card [style]="{'height': '100%'}" class="h-full">
+              <ng-template pTemplate="header">
+                <div class="product-image-container">
+                  <img 
+                    [src]="product.image" 
+                    [alt]="product.name"
+                    class="product-image"
+                    (error)="onImageError($event)"
+                  />
+                  <div class="product-overlay">
+                    <div class="flex gap-2">
+                      <p-button 
+                        icon="pi pi-shopping-cart" 
+                        size="small"
+                        (onClick)="addToCart(product)"
+                        [disabled]="product.inventoryStatus === 'OUTOFSTOCK' || isInCart(product.id)"
+                        [label]="isInCart(product.id) ? 'Déjà dans le panier' : 'Ajouter au panier'"
+                        tooltip="Ajouter au panier"
+                      />
+                      <!-- TODO: Activate if linked to Backend -->
+                      <!-- <p-button 
+                        icon="pi pi-heart" 
+                        size="small"
+                        severity="secondary"
+                        tooltip="Ajouter aux favoris"
+                      /> -->
+                    </div>
+                  </div>
+                  @if (isInCart(product.id)) {
+                    <div class="cart-badge-in-card">
+                      <i class="pi pi-shopping-cart"></i> Dans le panier
+                    </div>
+                  }
+                  @if (product.inventoryStatus === 'OUTOFSTOCK') {
+                    <div class="stock-badge out-of-stock">
+                      <i class="pi pi-times-circle"></i>
+                      Rupture de stock
+                    </div>
+                  } @else if (product.inventoryStatus === 'LOWSTOCK') {
+                    <div class="stock-badge low-stock">
+                      <i class="pi pi-exclamation-triangle"></i>
+                      Stock limité
+                    </div>
+                  }
+                </div>
+              </ng-template>
+              
+              <ng-template pTemplate="content">
+                <div class="product-content">
+                  <div class="product-category">{{ product.category }}</div>
+                  <h3 class="product-name">{{ product.name }}</h3>
+                  <p class="product-description">{{ product.description }}</p>
+                  
+                  <div class="product-rating">
+                    <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false" [stars]="5"></p-rating>
+                    <span class="rating-text">({{ product.rating }}/5)</span>
+                  </div>
+                  
+                  <div class="product-price">{{ product.price | currency:'EUR' }}</div>
+            
+                </div>
+              </ng-template>
+
+              <!-- TODO: Reactivate if linked to Backend -->
+              <!-- <ng-template pTemplate="footer">
+                <div class="flex gap-2 justify-between">
+                  <p-button 
+                    label="Modifier" 
+                    icon="pi pi-pencil"
+                    severity="secondary" 
+                    size="small"
+                    (onClick)="onUpdate(product)"
+                  />
+                  <p-button 
+                    label="Supprimer" 
+                    icon="pi pi-trash"
+                    severity="danger" 
+                    size="small"
+                    (onClick)="onDelete(product)" 
+                  />
+                </div>
+              </ng-template> -->
+            </p-card>
+          </div>
+        }
+      </div>
+    </ng-template>
+    
+  </p-dataView>
+
+
+  <!-- Product form -->
+  <p-dialog [(visible)]="isDialogVisible"
+    [style]="{ width: '50vw' }"
+    header="Ajout/Edition produit">
+    <app-product-form
+      [product]="editedProduct()"
+      (save)="onSave($event)"
+      (cancel)="onCancel()"
+    />
+  </p-dialog>
+</div>

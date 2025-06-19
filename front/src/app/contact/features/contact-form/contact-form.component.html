@@ -1,0 +1,62 @@
+<div class="contact-container p-4">
+  <h2 class="text-2xl font-bold mb-4">Contactez nous</h2>
+  
+  <p-card>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-4">
+
+      <div>
+        <label for="email" class="block text-sm font-medium mb-2">Email *</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="votre@email.com"
+          [style]="{'width': '100%'}"
+          [class.ng-invalid]="isFieldInvalid('email')"
+        />
+        @if (isFieldInvalid('email')) {
+          <small class="text-red-500">
+            @if (contactForm.get('email')?.errors?.['required']) {
+              L'email est obligatoire
+            } @else if (contactForm.get('email')?.errors?.['email']) {
+              Veuillez saisir un email valide
+            }
+          </small>
+        }
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-medium mb-2">Message *</label>
+        <textarea pInputTextarea formControlName="message" placeholder="Votre message..." [style]="{'width': '100%', 'min-height': '120px'}" [class.ng-invalid]="isFieldInvalid('message')"></textarea>
+        <div class="flex justify-between items-center mt-1">
+          @if (isFieldInvalid('message')) {
+            <small class="text-red-500">
+              @if (contactForm.get('message')?.errors?.['required']) {
+                Le message est obligatoire
+              } @else if (contactForm.get('message')?.errors?.['maxlength']) {
+                Le message ne peut pas dépasser 300 caractères
+              }
+            </small>
+          }
+          <small class="text-gray-500">
+            {{ contactForm.get('message')?.value?.length || 0 }}/300
+          </small>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <p-button
+          type="submit"
+          label="Envoyer"
+          icon="pi pi-send"
+          [disabled]="contactForm.invalid || isSubmitting()"
+        />
+      </div>
+      
+    </form>
+  </p-card>
+
+
+
+  <p-toast/>
+</div> 
