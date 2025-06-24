@@ -1,41 +1,189 @@
-# Node/Angular (front/)
+# ==================== NODE/ANGULAR (FRONTEND) ====================
+# Dependencies
 front/node_modules/
+front/.npm
+front/.eslintcache
+
+# Build outputs
 front/dist/
 front/.angular/
+front/.sass-cache/
+front/.cache/
+front/.turbo/
+front/tmp/
+
+# Environment files
 front/.env
 front/.env.*.local
+front/.env.development.local
+front/.env.test.local
+front/.env.production.local
+
+# IDE files
 front/.vscode/
-front/.DS_Store
+front/.idea/
+front/*.iml
+front/*.ipr
+front/*.iws
+
+# Logs
 front/npm-debug.log*
 front/yarn-debug.log*
 front/yarn-error.log*
 front/package-lock.json
-front/.idea/
-front/.sass-cache/
-front/.cache/
-front/.turbo/
-front/coverage/
-front/tmp/
-front/.eslintcache
 
-# Mac/Windows system files
+# Testing
+front/coverage/
+front/.nyc_output/
+
+# ==================== SPRING BOOT (BACKEND) ====================
+# Build outputs
+back/alten-shop/build/
+back/alten-shop/target/
+back/alten-shop/.gradle/
+back/alten-shop/gradle-app.setting
+back/alten-shop/!gradle/wrapper/gradle-wrapper.jar
+
+# IDE files
+back/alten-shop/.idea/
+back/alten-shop/.vscode/
+back/alten-shop/*.iml
+back/alten-shop/*.ipr
+back/alten-shop/*.iws
+
+# Eclipse/STS
+back/alten-shop/.classpath
+back/alten-shop/.project
+back/alten-shop/.settings/
+back/alten-shop/.springBeans
+back/alten-shop/.sts4-cache
+back/alten-shop/.apt_generated
+back/alten-shop/.factorypath
+
+# Maven
+back/alten-shop/.mvn/
+back/alten-shop/mvnw
+back/alten-shop/mvnw.cmd
+
+# Logs
+back/alten-shop/logs/
+back/alten-shop/*.log
+
+# Environment files
+back/alten-shop/.env
+back/alten-shop/application-local.properties
+back/alten-shop/application-dev.properties
+
+# Database files (if using local DB)
+back/alten-shop/*.db
+back/alten-shop/*.sqlite
+back/alten-shop/data/
+
+# ==================== SYSTEM FILES ====================
+# macOS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
-# Spring Boot (back/)
-back/target/
-back/.classpath
-back/.project
-back/.settings/
-back/.idea/
-back/.vscode/
-back/.mvn/
-back/logs/
-back/*.iml
-back/.env
-back/.DS_Store
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 
-# General
-*.log
+# Linux
+*~
+
+# ==================== GENERAL ====================
+# Environment files
 .env
 .env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
