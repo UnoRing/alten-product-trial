@@ -1,6 +1,7 @@
 package com.james.alten_shop.entities;
 
 import com.james.alten_shop.enums.InventoryStatusEnum;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,6 +15,8 @@ import lombok.experimental.Accessors;
 public class Product extends EntityBase {
 
     private String name;
+
+    private String code;
 
     private String description;
 
