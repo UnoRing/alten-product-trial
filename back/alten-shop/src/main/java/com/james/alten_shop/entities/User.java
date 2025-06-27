@@ -1,12 +1,13 @@
 package com.james.alten_shop.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,4 +22,20 @@ public class User extends EntityBase {
 
     @Column(unique = true)
     private String email;
+
+    /** TODO: Finish implementing
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_favourite_products", joinColumns = {
+        @JoinColumn(name = "user_id", referencedColumnName = "id")},
+        inverseJoinColumns = {
+            @JoinColumn(name = "product_id", referencedColumnName = "id")})
+    private List<Product> favouriteProducts = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_cart", joinColumns = {
+        @JoinColumn(name = "user_id", referencedColumnName = "id")},
+        inverseJoinColumns = {
+            @JoinColumn(name = "product_id", referencedColumnName = "id")})
+    private List<Product> cart= new ArrayList<>();
+    **/
 }

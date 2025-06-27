@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 
 @Data
 @MappedSuperclass
-// Probably overkill for 1 entity but hey at least it's clean overkill
+// Probably overkill for 1 or 2 entities but hey at least it's clean overkill
 public class EntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
