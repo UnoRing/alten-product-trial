@@ -48,12 +48,12 @@ Développer un back-end permettant la gestion de produits définis plus bas.
 Vous pouvez utiliser la technologie de votre choix parmi la liste suivante :
 
 - Node.js/Express
-- Java/Spring Boot
+- Java/Spring Boot ✅
 - C#/.net Core
 - PHP/Symphony : Utilisation d'API Platform interdite
 
 
-Le back-end doit gérer les API suivantes : 
+Le back-end doit gérer les API suivantes : ✅
 
 | Resource           | POST                  | GET                            | PATCH                                    | PUT | DELETE           |
 | ------------------ | --------------------- | ------------------------------ | ---------------------------------------- | --- | ---------------- |
@@ -81,7 +81,7 @@ class Product {
 }
 ```
 
-Le back-end créé doit pouvoir gérer les produits dans une base de données SQL/NoSQL ou dans un fichier json.
+Le back-end créé doit pouvoir gérer les produits dans une base de données SQL/NoSQL ou dans un fichier json. ✅
 
 ### Partie 2
 

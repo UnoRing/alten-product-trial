@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.Map;
 
 @Component
+// TODO: actually use it
+// TODO: use custom annotation to check if admin based on logins for admin only functions
 public class JwtUtil {
 
     /*
@@ -47,7 +49,6 @@ public class JwtUtil {
     }
 
     private Claims extractAllClaims(String token) {
-        // Extract claims after signature verification
         return Jwts
             .parser()
             .verifyWith(getSignInKey())
