@@ -22,7 +22,7 @@
     </div>
     <div class="cart-list">
       @for (item of cart().items; track item.product.id) {
-        <p-card class="cart-item mb-4">
+        <p-card class="cart-item ">
           <div class="flex items-center gap-4">
             <img 
               [src]="item.product.image" 
